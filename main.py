@@ -6,7 +6,7 @@ from string import ascii_uppercase
 
 app = Flask(__name__)
 app.config["SECRET_KEY"] = "secretkye1234"
-chatapp = SocketIO(app)
+chatapp = SocketIO(app, cors_allowed_origins='https://chatapp-prod2.onrender.com')
 
 rooms = {}
 def generate_unique_code(length):
