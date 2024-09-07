@@ -96,4 +96,4 @@ def disconnect():
     print(f"{name} has left the room")
 
 if __name__ == "__main__":
-    chatapp.run(app)
+    chatapp.run(app, allow_unsafe_werkzeug=True)
