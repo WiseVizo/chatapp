@@ -1,0 +1,249 @@
+
+:root {
+    --primary-color: #000000; 
+    --secondary-color: #f5f5f5;   
+    --accent-color: #8bc34a ;     
+    --bg-color: #2E8B57;           
+    --text-color: #ffffff;         
+    --font-family: 'Arial', sans-serif;
+    --neon-red: #ff073a;   
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-family);
+    box-sizing: border-box;
+}
+  
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 50px;
+    background-color: var(--primary-color);
+    height: 30vh;
+    padding-top: 80 px;
+  }
+  
+
+.heading {
+    font-size: 3rem;
+    color: transparent; 
+    background: linear-gradient(45deg, var(--accent-color), var(--neon-red)); 
+    -webkit-background-clip: text;
+    background-clip: text;
+    margin: 0;
+  
+
+    filter: blur(1px);
+    text-shadow: 
+        0 0 10px rgba(0, 255, 0, 0.5), 
+        0 0 20px rgba(0, 255, 0, 0.3),
+        0 0 30px rgba(0, 255, 0, 0.2); 
+  }
+  
+
+@keyframes growShrink {
+    0% {
+        transform: scale(1); 
+        opacity: 0.5; 
+    }
+    50% {
+        transform: scale(1.1);
+        opacity: 1;
+        text-shadow: 0 0 10px var(--neon-red),
+                 0 0 20px var(--neon-red),
+                 0 0 30px var(--neon-red),
+                 0 0 40px var(--neon-red),
+                 0 0 50px var(--neon-red);
+    }
+    100% {
+        transform: scale(1);
+        opacity: 0.5;         
+    }
+}
+  
+
+.heading-description {
+    font-size: 1.2rem;
+    color: var(--accent-color);
+    margin-top: 10px;
+    font-family: var(--font-family);
+
+    text-shadow: 0 0 10px var(--accent-color),
+               0 0 20px var(--accent-color),
+               0 0 30px var(--accent-color),
+               0 0 40px var(--accent-color),
+               0 0 50px var(--accent-color),
+               0 0 60px var(--accent-color);
+
+    animation: growShrink 3s infinite ease-in-out;
+}
+
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+
+}
+
+.my-div{
+    height: 70vh;     
+}
+
+.content{
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    background-color: var(--primary-color); 
+    color: var(--text-color); 
+    font-family: var(--font-family);
+}
+
+
+.NameForm {
+    display: flex;
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center;
+    padding: 20px; 
+    border: 2px solid var(--accent-color); 
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.1); 
+    width: 400px; 
+    max-width: 90%; 
+    margin: auto; 
+    margin-top: 16vh;
+}
+
+
+.NameForm  input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0; 
+    border: 1px solid #ccc; 
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.9);
+    font-size: 22px;
+}
+
+
+.start-btn {
+    background-color: var(--accent-color); 
+    color: white;
+    padding: 10px 20px; 
+    border: none;
+    border-radius: 5px; 
+    cursor: pointer; 
+    transition: background-color 0.3s ease;
+}
+
+
+.start-btn:hover {
+    background-color: var(--neon-red); 
+}
+
+
+
+@media (max-width: 480px) {
+    .heading {
+        font-size: 2rem;
+        margin-bottom: 10px;
+        margin-top: 50px;
+    }
+
+    .heading-description {
+        font-size: 1rem;
+        max-width: 90%; 
+        
+        white-space: normal;
+    }
+    .NameForm {
+        padding: 5px; /* Further reduce padding */
+        width: 70vw; /* Shrink form even more for very small devices */
+        margin-top: 69px; /* Less top margin for smaller screens */
+        font-size: smaller;
+    }
+    .NameForm  input[type="text"] {
+        font-size: smaller;
+        width: 174px;
+    }
+
+   
+}
+
+
+.join{
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    background-color: var(--primary-color); 
+    color: var(--text-color); 
+    font-family: var(--font-family);
+}
+
+.join h2{
+    margin-bottom: 8px;
+    color: var(--accent-color);
+}
+
+
+.JoinForm {
+    display: flex;
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center;
+    padding: 20px; 
+    border: 2px solid var(--accent-color); 
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.1); 
+    width: 400px; 
+    max-width: 90%; 
+    margin: auto; 
+    margin-top: 16vh;
+}
+
+
+.JoinForm  input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0; 
+    border: 1px solid #ccc; 
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.9);
+    font-size: 22px;
+    width: 100%;
+}
+
+
+.join-btn, .create-room-btn {
+    background-color: var(--accent-color); 
+    color: white;
+    padding: 10px 20px; 
+    border: none;
+    border-radius: 5px; 
+    cursor: pointer; 
+    transition: background-color 0.3s ease;
+    margin: 10px 0;
+}
+
+
+.join-btn:hover, .create-room-btn:hover {
+    background-color: var(--neon-red); 
+}
+
+@media (max-width: 480px) {
+    .JoinForm {
+        padding: 5px; /* Further reduce padding */
+        width: 70vw; /* Shrink form even more for very small devices */
+        margin-top: 69px; /* Less top margin for smaller screens */
+        font-size: smaller;
+    }
+    .JoinForm input[type=text]{
+        font-size: smaller;
+        width: 174px;
+    }
+}
