@@ -4,9 +4,15 @@ from flask_socketio import join_room, leave_room, SocketIO, send
 import random
 from string import ascii_uppercase
 
+from flask_sqlalchemy import SQLAlchemy
+import sqlite3
+
 app = Flask(__name__)
 app.config["SECRET_KEY"] = "secretkye1234"
-chatapp = SocketIO(app, cors_allowed_origins='https://chatapp-prod2.onrender.com')
+chatapp = SocketIO(app,cors_allowed_origins="*")
+# chatapp = SocketIO(app, cors_allowed_origins='https://chatapp-prod2.onrender.com')
+
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///messages.db'
 
 rooms = {}
 def generate_unique_code(length):
@@ -39,13 +45,13 @@ def home():
             room = generate_unique_code(4)
             rooms[room] = {"members": 0, "messages": []}
         elif code not in rooms:
-            return render_template("home.html", error="Room does not exist.", code=code, name=name)
+            return render_template("homev1.html", error="Room does not exist.", code=code, name=name)
         
         session["room"] = room
         session["name"] = name
         return redirect(url_for("room"))
 
-    return render_template("home.html")
+    return render_template("homev1.html")
 
 @app.route("/room")
 def room():

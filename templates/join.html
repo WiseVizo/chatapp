@@ -1,0 +1,29 @@
+{% extends 'base.html' %} {% block join %}
+<div class="my-div">
+
+<form method="post" class="JoinForm">
+  <h2>Hello, {{name}}</h2>
+  <h3>Enter Team Code:</h3>
+  <div>
+    <input
+      type="text"
+      placeholder="Eg. QMTX"
+      required
+      name="code"
+      value="{{code}}"
+    />
+  </div>
+  <button type="submit" name="join" class="join-btn">Join Room</button>
+  <span>OR</span>
+  <div class="create-team">
+    <Button type="button" name="create-room" id="create-room" class="create-room-btn">Create a Room😎</Button>
+  </div>
+
+</form>
+</div>
+<!-- {% if error %}
+<ul>
+  <li>{{error}}</li>
+</ul>
+{% endif %} -->
+{% endblock %}

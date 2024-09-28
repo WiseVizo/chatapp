@@ -16,7 +16,8 @@
   </div>
 </div>
 <script type="text/javascript">
-  var socketio = io('https://chatapp-prod2.onrender.com');
+  var socketio = io();
+  // var socketio = io('https://chatapp-prod2.onrender.com');
 
   const messages = document.getElementById("messages");
 
@@ -32,6 +33,15 @@
     </div>`;
     messages.innerHTML += content;
   };
+
+  // connecting enter key down with send btn
+  inputField = document.getElementById("message")
+  inputField.addEventListener('keydown', ()=>{
+    if (event.key === 'Enter') {
+        sendMessage();
+  }
+  })
+  
 
   socketio.on("message", (data) => {
     createMessage(data.name, data.message);
