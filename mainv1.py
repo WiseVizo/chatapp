@@ -1,6 +1,6 @@
 from flask import Flask, redirect, render_template, request, session, url_for
 from flask_socketio import join_room, leave_room, SocketIO, send
-
+import os
 import random
 from string import ascii_uppercase
 
@@ -96,4 +96,5 @@ def disconnect():
     print(f"{name} has left the room")
 
 if __name__ == "__main__":
-    chatapp.run(app)
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port)
