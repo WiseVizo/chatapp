@@ -1,5 +1,7 @@
-{% extends 'base.html' %} {% block content %}
+{% extends 'base.html' %} 
+{% block room %}
 <div class="message-box">
+    <div class="message-box-in">
   <h2>Chat Room: {{code}}</h2>
   <div class="messages" id="messages"></div>
   <div class="inputs">
@@ -13,6 +15,7 @@
     <button type="button" name="send" id="send-btn" onClick="sendMessage()">
       Send
     </button>
+</div>
   </div>
 </div>
 <script type="text/javascript">
@@ -21,14 +24,20 @@
 
   const messages = document.getElementById("messages");
 
-  const createMessage = (name, msg) => {
+  const createMessage = (name, msg, fullName) => {
+  const date = new Date();
+  const hours = date.getHours();   // Get the current hour (0-23)
+  const minutes = date.getMinutes(); // Get the current minutes (0-59)
+
+  const formattedTime = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}`;
+    const nameClass = fullName === "{{fullName}}" ? 'myName' : '';
     const content = `
     <div class="text">
-        <span>
-            <strong>${name}</strong>: ${msg}
+        <span class="${nameClass}">
+            <strong >${name}</strong>: ${msg}
         </span>
         <span class="muted">
-            ${new Date().toLocaleString()}
+            ,${formattedTime}
         </span>
     </div>`;
     messages.innerHTML += content;
@@ -44,7 +53,7 @@
   
 
   socketio.on("message", (data) => {
-    createMessage(data.name, data.message);
+    createMessage(data.name, data.message, data.fullName);
   });
 
   const sendMessage = () => {
@@ -56,6 +65,6 @@
 </script>
 {% for msg in messages %}
  <script type="text/javascript">
-  createMessage("{{msg.name}}", "{{msg.message}}");
+  createMessage("{{msg.name}}", "{{msg.message}}", "{{msg.fullName}}");
  </script>
 {% endfor %} {% endblock %}

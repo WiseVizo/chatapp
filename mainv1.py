@@ -9,9 +9,7 @@ from string import ascii_uppercase
 app = Flask(__name__)
 app.config["SECRET_KEY"] = "secretkye1234"
 chatapp = SocketIO(app,cors_allowed_origins="*")
-# chatapp = SocketIO(app, cors_allowed_origins='https://chatapp-prod2.onrender.com')
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///messages.db'
 
 rooms = {}
 def generate_unique_code(length):
@@ -31,9 +29,11 @@ def home():
         name = request.form.get("name")
 
         if not name:
-            return render_template("home.html", error="Please enter a name.", name=name)
+            return render_template("homev1.html", error="Please enter a name.")
+        session["displayName"] = name
+        salt = generate_unique_code(4)
 
-        session["name"] = name
+        session["name"] = name + salt
         return redirect(url_for("join"))
 
     return render_template("homev1.html")
@@ -44,7 +44,27 @@ def join():
     name = session.get("name")
     if not name:
         return redirect(url_for("home"))
-    return render_template("join.html", name=name)
+    if request.method == "POST":
+        code = request.form.get("code")
+        code = code.lstrip()
+        code = code.rstrip()
+        code = code.upper()
+        join = request.form.get("join", False)
+        create = request.form.get("create", False)
+
+        if join != False and not code:
+                return render_template("join.html", error="Please enter a room code.", code=code, name=session.get("displayName"))
+        room = code
+        
+        if create != False:
+            room = generate_unique_code(4)
+            rooms[room] = {"members": 0, "messages": []}
+        elif code not in rooms:
+            return render_template("join.html", error="Room does not exist.", code=code, name=session.get("displayName"))
+        session["room"] = room
+        return redirect(url_for("room"))
+
+    return render_template("join.html", name=session.get("displayName"))
 
 
 @app.route("/room")
@@ -52,7 +72,7 @@ def room():
     room = session.get("room")
     if room is None or session.get("name") is None or room not in rooms:
         return redirect(url_for("home"))
-    return render_template('room.html', code=room, messages=rooms[room]["messages"])
+    return render_template('roomv1.html', code=room, messages=rooms[room]["messages"], fullName=session.get("name"))
 
 
 @chatapp.on("message")
@@ -62,7 +82,8 @@ def message(data):
         return 
     
     content = {
-        "name": session.get("name"),
+        "name": session.get("displayName"),
+        "fullName": session.get("name"),
         "message": data["data"]
     }
     send(content, to=room)
@@ -72,21 +93,21 @@ def message(data):
 @chatapp.on("connect")
 def connect(auth):
     room = session.get("room")
-    name = session.get("name")
+    name = session.get("displayName")
     if not room or not name:
         return
     if room not in rooms:
         leave_room(room)
         return
     join_room(room)
-    send({'name': name, "message": "has entered the room"}, to=room)
+    send({'name': name, "message": "has entered the room", "fullName": session.get("name")}, to=room)
     rooms[room]["members"] += 1
     print(f"{name} has joinned the room {room}")
 
 @chatapp.on("disconnect")
 def disconnect():
     room = session.get("room")
-    name = session.get("name")
+    name = session.get("displayName")
     leave_room(room)
     if room in rooms:
         rooms[room]["members"] -= 1

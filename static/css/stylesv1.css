@@ -247,3 +247,65 @@ body {
         width: 174px;
     }
 }
+
+.message-box{
+    height: 70vh;
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    background-color: var(--primary-color); 
+    color: var(--text-color); 
+    font-family: var(--font-family);
+    flex-direction: column;
+}
+
+.message-box-in{
+    border: var(--bg-color) solid 4px;
+    height: 60vh;
+    width: 40vw;
+    border-radius: 10px;
+    position: relative;
+    min-width: 350px;
+
+}
+
+.message-box-in h2{
+    padding: 10px;
+    text-align: center;
+}
+.messages{
+    height: 70%;
+    padding: 10px;
+}
+
+.inputs{
+  position: absolute;  /* Stick to a specific position in the parent */
+  bottom: 0;           /* Align to the bottom of the parent */
+  width: 100%;         /* Full width of the parent */
+  padding: 10px;
+  text-align: center;
+  display: flex;
+}
+.inputs input[type="text"]{
+width: 80%;
+margin: 10px;
+}
+
+.inputs button{
+    background-color: var(--accent-color); 
+    color: white;
+    padding: 10px 20px; 
+    border: none;
+    border-radius: 5px; 
+    cursor: pointer; 
+    transition: background-color 0.3s ease;
+    margin: 10px 0;
+}
+
+.inputs button:hover{
+    background-color: var(--neon-red); 
+}
+
+.myName{
+    color: var(--accent-color);
+}
