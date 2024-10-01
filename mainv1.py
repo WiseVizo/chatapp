@@ -110,11 +110,24 @@ def disconnect():
     name = session.get("displayName")
     leave_room(room)
     if room in rooms:
-        rooms[room]["members"] -= 1
-        if rooms[room]["members"] <1:
+        # rooms[room]["members"] -= 1
+        # if rooms[room]["members"] <1:
+        #     del rooms[room]
+        participants = list(chatapp.server.manager.get_participants('/', room))
+        num_participants = len(participants)
+        if num_participants<1:
             del rooms[room]
+
     send({"name": name, "message": "has left the room"}, to=room)
     print(f"{name} has left the room")
+
+@chatapp.on("leave_room")
+def leaveRoom():
+    room = session.get("room")
+    name = session.get("displayName")
+    leave_room(room)
+    join_url = url_for("join", name=name)
+    chatapp.emit("redirect_to_join", {"url": join_url}, room=request.sid)
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))

@@ -276,6 +276,10 @@ body {
 .messages{
     height: 70%;
     padding: 10px;
+    overflow-y: auto;
+    overflow-x: hidden; 
+    word-wrap: break-word; /* Break long words onto new lines */
+    
 }
 
 .inputs{
@@ -308,4 +312,34 @@ margin: 10px;
 
 .myName{
     color: var(--accent-color);
+}
+
+.text{
+    margin: 5px; 
+    position: relative;
+}
+
+.muted{
+    font-size: 0.8em;
+    color: var(--neon-red); 
+    text-shadow: 0 0 5px rgba(255, 0, 0, 0.5), /* Neon effect */
+                 0 0 10px rgba(255, 0, 0, 0.3);
+    position: absolute; /* Position the timestamp absolutely */
+    right: 0; /* Align it to the right of the container */
+    bottom: 0;
+}
+
+.leave-btn button{
+    background-color: var(--accent-color); 
+    color: white;
+    padding: 10px 20px; 
+    border: none;
+    border-radius: 5px; 
+    cursor: pointer; 
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+}
+
+.leave-btn button:hover{
+    background-color: var(--neon-red); 
 }
