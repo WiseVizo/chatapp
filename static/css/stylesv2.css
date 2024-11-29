@@ -1,0 +1,383 @@
+:root {
+    --primary-color: #121212; 
+    --secondary-color: #2837b6;   
+    --accent-color: #D3B8AE ;     
+    --bg-color: #2E8B57;           
+    --text-color: #ffffff;         
+    --font-family: 'Arial', sans-serif;
+    --neon-red: #ff073a;   
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-family);
+    box-sizing: border-box;
+}
+  
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 50px;
+    background-color: var(--primary-color);
+    height: 30vh;
+    padding-top: 80 px;
+  }
+  
+
+  .heading {
+    font-size: 3rem;
+    color: transparent;
+    background: linear-gradient(45deg, #D3B8AE, #FFD1BA);
+    -webkit-background-clip: text;
+    background-clip: text;
+    margin: 0;
+
+    text-shadow: 
+        0 0 10px rgba(211, 184, 174, 0.5), /* Soft glow matching #D3B8AE */
+        0 0 20px rgba(211, 184, 174, 0.3),
+        0 0 30px rgba(211, 184, 174, 0.2); /* Depth effect */
+}
+
+  
+
+@keyframes growShrink {
+    0% {
+        transform: scale(1); 
+        opacity: 0.5; 
+    }
+    50% {
+        transform: scale(1.1);
+        opacity: 1;
+        text-shadow: 0 0 10px var(--neon-red),
+                 0 0 20px var(--neon-red),
+                 0 0 30px var(--neon-red),
+                 0 0 40px var(--neon-red),
+                 0 0 50px var(--neon-red);
+    }
+    100% {
+        transform: scale(1);
+        opacity: 0.5;         
+    }
+}
+  
+
+.heading-description {
+    font-size: 1.2rem;
+    color: var(--accent-color);
+    margin-top: 10px;
+    font-family: var(--font-family);
+
+  
+}
+
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+
+}
+
+.my-div{
+    height: 70vh;     
+}
+
+.content{
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    background-color: var(--primary-color); 
+    color: var(--text-color); 
+    font-family: var(--font-family);
+}
+
+
+.NameForm {
+    display: flex;
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center;
+    padding: 20px; 
+    border: 2px solid var(--accent-color); 
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.1); 
+    width: 400px; 
+    max-width: 90%; 
+    margin: auto; 
+    margin-top: 16vh;
+}
+
+
+.NameForm  input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0; 
+    border: 1px solid #ccc; 
+    border-radius: 5px;
+    background-color: #ffeaea;
+    font-size: 22px;
+}
+
+
+.start-btn {
+    background-color: white; 
+    color: #080808;
+    padding: 10px 20px; 
+    border: none;
+    border-radius: 5px; 
+    cursor: pointer; 
+    transition: background-color 0.3s ease;
+}
+
+
+.start-btn:hover {
+    background-color: var(--neon-red); 
+}
+
+
+
+@media (max-width: 480px) {
+    .heading {
+        font-size: 2rem;
+        margin-bottom: 10px;
+        margin-top: 50px;
+    }
+
+    .heading-description {
+        font-size: 1rem;
+        max-width: 90%; 
+        animation: none; /* Disables the animation */
+        white-space: normal;
+    }
+    .NameForm {
+        padding: 5px; /* Further reduce padding */
+        width: 70vw; /* Shrink form even more for very small devices */
+        margin-top: 69px; /* Less top margin for smaller screens */
+        font-size: smaller;
+    }
+    .NameForm  input[type="text"] {
+        font-size: smaller;
+        width: 174px;
+    }
+
+   
+}
+
+
+.join{
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    background-color: var(--primary-color); 
+    color: var(--text-color); 
+    font-family: var(--font-family);
+}
+
+.join h2{
+    margin-bottom: 8px;
+    color: var(--accent-color);
+}
+
+
+.JoinForm {
+    display: flex;
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center;
+    padding: 20px; 
+    border: 2px solid var(--accent-color); 
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.1); 
+    width: 400px; 
+    max-width: 90%; 
+    margin: auto; 
+    margin-top: 16vh;
+}
+
+
+.JoinForm  input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0; 
+    border: 1px solid #ccc; 
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.9);
+    font-size: 22px;
+    width: 100%;
+}
+
+
+.join-btn, .create-room-btn {
+    background-color: white; 
+    color: #080808;
+    padding: 10px 20px; 
+    border: none;
+    border-radius: 5px; 
+    cursor: pointer; 
+    transition: background-color 0.3s ease;
+    margin: 10px 0;
+}
+
+
+.join-btn:hover, .create-room-btn:hover {
+    background-color: var(--neon-red); 
+}
+
+@media (max-width: 480px) {
+    .JoinForm {
+        padding: 5px; /* Further reduce padding */
+        width: 70vw; /* Shrink form even more for very small devices */
+        margin-top: 69px; /* Less top margin for smaller screens */
+        font-size: smaller;
+    }
+    .JoinForm input[type=text]{
+        font-size: smaller;
+        width: 174px;
+    }
+}
+
+.message-box{
+    height: 70vh;
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    background-color: var(--primary-color); 
+    color: var(--text-color); 
+    font-family: var(--font-family);
+    flex-direction: column;
+}
+
+.message-box-in{
+    border: var(--bg-color) solid 4px;
+    height: 60vh;
+    width: 40vw;
+    border-radius: 10px;
+    position: relative;
+    min-width: 350px;
+
+}
+
+.message-box-in h2{
+    padding: 10px;
+    text-align: center;
+}
+.messages{
+  
+    height: 70%;
+    padding: 10px; /* You can reduce this padding value */
+    overflow-y: auto;
+    overflow-x: hidden; 
+    word-wrap: break-word; /* Break long words onto new lines */
+    margin-bottom: 0; /* Break long words onto new lines */
+    
+}
+
+.inputs{
+  position: absolute;  /* Stick to a specific position in the parent */
+  bottom: 0;           /* Align to the bottom of the parent */
+  width: 100%;         /* Full width of the parent */
+  padding: 10px;
+  text-align: center;
+  display: flex;
+}
+.inputs input[type="text"]{
+width: 80%;
+margin: 10px;
+}
+
+.inputs button{
+    background-color: white; 
+    color: black;
+    padding: 10px 20px; 
+    border: none;
+    border-radius: 5px; 
+    cursor: pointer; 
+    transition: background-color 0.3s ease;
+    margin: 10px 0;
+}
+
+.inputs button:hover{
+    background-color: var(--neon-red); 
+}
+
+.myName{
+    color: var(--accent-color);
+}
+
+.text{
+    margin: 5px; 
+    position: relative;
+}
+
+.muted{
+    font-size: 0.8em;
+    color: var(--neon-red); 
+    text-shadow: 0 0 5px rgba(255, 0, 0, 0.5), /* Neon effect */
+                 0 0 10px rgba(255, 0, 0, 0.3);
+    position: absolute; /* Position the timestamp absolutely */
+    right: 0; /* Align it to the right of the container */
+    bottom: 0;
+}
+
+.leave-btn button{
+    font-size: 1rem;
+    padding: 10px 20px;
+    border: 2px solid transparent;
+    border-radius: 5px;
+    background-color: limegreen; /* Button background */
+    color: #080808; /* Text color */
+    cursor: pointer;
+    transition: all 0.3s ease
+    
+
+}
+
+
+.leave-btn button:hover{
+    background-color: var(--neon-red); 
+}
+.messages {
+    max-height: 400px; /* Set a maximum height for the messages box */
+    overflow-y: scroll; /* Enable vertical scrolling */
+    padding-right: 10px; /* Add some space to the right for the scrollbar */
+  }
+
+  /* Custom Scrollbar Styles */
+  .messages::-webkit-scrollbar {
+    width: 3px; /* Makes the scrollbar thinner */
+  }
+
+  .messages::-webkit-scrollbar-track {
+    
+    background: #121212; /* Light background for the scrollbar track */
+  }
+
+  .messages::-webkit-scrollbar-thumb {
+    background: #888; /* Darker color for the scrollbar thumb */
+    border-radius: 10px; /* Round the edges of the scrollbar thumb */
+  }
+
+  .messages::-webkit-scrollbar-thumb:hover {
+    background: #080808; /* Darker color when hovering over the scrollbar thumb */
+  }
+  .leave-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px; /* Additional space between message box and button */
+    margin-top: -10px;
+}
+
+.message-box-in {
+    border: var(--bg-color) solid 4px;
+    height: 60vh;
+    width: 40vw;
+    border-radius: 10px;
+    position: relative;
+    min-width: 350px;
+    margin-bottom: 20px; /* Keeps the gap with the leave button */
+    margin-top: -25px; /* Negative margin to move the chat box upwards */
+}
